@@ -1,0 +1,44 @@
+# folders and files to be ignored by git
+
+############
+## GutenDev
+############
+
+
+############
+## Security
+############
+*.cfg
+*.config
+config.cson
+sftp.json
+
+############
+## OSes
+############
+[Tt]humbs.db
+[Dd]esktop.ini
+*.DS_store
+.DS_store?
+
+############
+## Misc
+############
+node_modules/
+package-lock.json
+bin/
+tmp/
+*.tmp
+*.bak
+*.log
+*.[Cc]ache
+*.cpr
+*.orig
+*.php.in
+.idea/
+temp/
+._*
+.Trashes
+.svn
+*.codekit
+*.scssc

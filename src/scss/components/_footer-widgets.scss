@@ -1,0 +1,13 @@
+/* ==========================================================================
+   FOOTER WIDGETS
+   ========================================================================== */
+
+.c-footer-widgets {
+  padding: 0 0 2rem 0;
+
+  @media (width >= $bp-medium) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 45px;
+  }
+}

@@ -1,0 +1,15 @@
+/* ==========================================================================
+   SCSS-ONLY VARIABLES
+   These must stay as SCSS $vars because CSS var() cannot be used inside
+   @media queries. Everything else lives in _custom-properties.scss.
+   ========================================================================== */
+
+// ++ BREAKPOINTS — match these to theme.json layout if you add @custom-media
+$bp-small:  500px;
+$bp-medium: 768px;
+$bp-large:  992px;
+$bp-xlarge: 1320px;
+
+// ++ GLYPHS (used with SCSS string interpolation only) ++++++++++++++++++++
+$double-arrow: "\u21d2";
+$link-glyph:   $double-arrow;

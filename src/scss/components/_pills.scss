@@ -1,0 +1,24 @@
+.c-pill-wrap {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 8px var(--spacing-md, 8px);
+    align-self: stretch;
+    flex-wrap: wrap;
+    
+}
+
+.c-pill-tag {
+    border-radius: var(--radius-full, 9999px);
+    display: flex;
+    font-size: 14px;
+padding: var(--spacing-xxs, 2px) 10px;
+align-items: center;
+border-radius: var(--radius-full, 9999px);
+border: 1px solid  #E9D7FE;
+background:  #F9F5FF;
+&.post-tag {
+    border: 1px solid  #C7D7FE;
+    background:  #EEF4FF;
+}
+}

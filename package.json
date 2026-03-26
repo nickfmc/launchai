@@ -1,0 +1,20 @@
+{
+  "name": "launchpad",
+  "version": "1.0.0",
+  "description": "LaunchPad — bespoke agency starter theme for WordPress",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src/js",
+    "lint:css": "wp-scripts lint-style 'src/**/*.scss'"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^29.0.0",
+    "sass-migrator": "^2.0.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.29.2",
+    "animate.css": "^4.1.1",
+    "swiper": "^11.0.6"
+  }
+}
