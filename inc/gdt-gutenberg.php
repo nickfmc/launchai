@@ -20,6 +20,19 @@ add_action( 'enqueue_block_editor_assets', 'launchpad_block_editor_scripts' );
 
 
 /**
+ * Register the patterns/ directory so WP auto-loads theme patterns.
+ * Each pattern declares its own title, slug, and categories via file header.
+ */
+function launchpad_register_patterns() {
+	register_block_pattern_category(
+		'launchpad',
+		array( 'label' => __( 'LaunchPad', 'launchpad' ) )
+	);
+}
+add_action( 'init', 'launchpad_register_patterns' );
+
+
+/**
  * Add a custom block category.
  *
  * @param array $categories Array of block categories.

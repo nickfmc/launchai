@@ -30,8 +30,9 @@
   --logo-size:            300px;
 
   // ++ TYPOGRAPHY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  --font-primary:   'Inter', sans-serif;
-  --font-secondary: 'Inter', serif;
+  // Font families reference WP preset vars auto-generated from theme.json fontFamilies.
+  --font-primary:   var(--wp--preset--font-family--primary);
+  --font-secondary: var(--wp--preset--font-family--secondary);
 
   --line-height-normal: 1.50;
   --line-height-tight:  1.10;
