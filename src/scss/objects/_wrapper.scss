@@ -1,24 +1,94 @@
 /* ==========================================================================
-   WRAPPERS
+   WRAPPERS & PAGE GRID
    ========================================================================== */
 
+// ─── Named-line page grid ────────────────────────────────────────────────────
+//
+// Column layout (6 tracks):
+//
+//  [full-start]
+//    minmax(--grid-gutter, 1fr)           ← elastic left gutter
+//  [wide-start]
+//    minmax(0, (wide - content) / 2)      ← left wide-zone (collapses on narrow)
+//  [content-start]
+//    min(contentSize, 100% - gutter×2)    ← the content column
+//  [content-end]
+//    minmax(0, (wide - content) / 2)      ← right wide-zone
+//  [wide-end]
+//    minmax(--grid-gutter, 1fr)           ← elastic right gutter
+//  [full-end]
+//
+// Children opt in by grid-column name:
+//   default                → content track (contained)
+//   .grid-wide / alignwide → wide track
+//   .grid-full / alignfull → full track (edge-to-edge)
+//   .bleed-right           → content-start / full-end
+//   .bleed-left            → full-start / content-end
+
+.o-page-grid {
+  display: grid;
+  grid-template-columns:
+    [full-start]    minmax(var(--grid-gutter), 1fr)
+    [wide-start]    minmax(0, calc((var(--wrapper-width-wide) - var(--wrapper-width-base)) / 2))
+    [content-start] min(var(--wrapper-width-base), 100% - (var(--grid-gutter) * 2))
+    [content-end]   minmax(0, calc((var(--wrapper-width-wide) - var(--wrapper-width-base)) / 2))
+    [wide-end]      minmax(var(--grid-gutter), 1fr)
+    [full-end];
+
+  // All direct children default to the content track
+  > * { grid-column: content; }
+
+  // WP alignment classes
+  > .alignwide  { grid-column: wide; }
+  > .alignfull  { grid-column: full; }
+
+  // Asymmetric bleed utilities
+  > .bleed-right { grid-column: content-start / full-end; }
+  > .bleed-left  { grid-column: full-start / content-end; }
+
+  // Named utility classes (non-WP contexts)
+  > .grid-content { grid-column: content; }
+  > .grid-wide    { grid-column: wide; }
+  > .grid-full    { grid-column: full; }
+}
+
+// ─── Subgrid for nested alignment ────────────────────────────────────────────
+//
+// Full-bleed / bleed children that need their own children to align to the
+// same named tracks. Apply .o-subgrid to the child element, or rely on the
+// automatic subgrid applied to alignfull / bleed-* children.
+
+.o-page-grid > .o-subgrid,
+.o-page-grid > .alignfull,
+.o-page-grid > .bleed-right,
+.o-page-grid > .bleed-left {
+  display: grid;
+  grid-template-columns: subgrid;
+
+  > .grid-content { grid-column: content; }
+  > .grid-wide    { grid-column: wide; }
+  > .grid-full    { grid-column: full; }
+}
+
+// ─── Classic wrappers (kept for backward compat / simple contexts) ─────────
+
 .o-wrapper {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--wrapper-width-base);
+  padding-inline: var(--grid-gutter);
   width: 100%;
 }
 
 .o-wrapper-wide {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--wrapper-width-wide);
+  padding-inline: var(--grid-gutter);
   width: 100%;
 }
 
 .o-wrapper-narrow {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--wrapper-width-narrow);
+  padding-inline: var(--grid-gutter);
   width: 100%;
 }

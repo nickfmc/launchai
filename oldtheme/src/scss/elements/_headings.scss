@@ -1,0 +1,125 @@
+
+h1, .h1-style, h2, .h2-style, h3, .h3-style, h4, .h4-style, h5, .h5-style, h6, .h6-style {
+  color: $heading-color;
+  font-family: $font-secondary;
+  font-weight: 700;
+  line-height: $line-height-tight;
+  margin: 0 0 1.5rem 0;
+}
+h1 a, .h1-style a, h2 a, .h2-style a, h3 a, .h3-style a, h4 a, .h4-style a, h5 a, .h5-style a, h6 a, .h6-style a {
+  text-decoration: none;
+}
+
+// Base heading styles
+h1 {
+  font-size: clamped(45px, 56px);
+}
+h2 {
+  font-size: clamped(45px, 56px);
+}
+h3 {
+  font-size: clamped(38px, 48px);
+}
+h4 {
+  font-size: clamped(32px, 40px);
+}
+h5 {
+  font-size: clamped(24px, 28px);
+  margin-bottom: 1.2rem;
+}
+h6 {
+  font-size: clamped(20px, 22px);
+}
+
+// Add extra spacing when headings follow paragraphs
+p:not(.is-style-eyebrow) + h1, p:not(.is-style-eyebrow) + .h1-style, ol + h1, ol + .h1-style, ul + h1, ul + .h1-style,
+p:not(.is-style-eyebrow) + h2, p:not(.is-style-eyebrow) + .h2-style, ol + h2, ol + .h2-style, ul + h2, ul + .h2-style,
+p:not(.is-style-eyebrow) + h3, p:not(.is-style-eyebrow) + .h3-style, ol + h3, ol + .h3-style, ul + h3, ul + .h3-style,
+p:not(.is-style-eyebrow) + h4, p:not(.is-style-eyebrow) + .h4-style, ol + h4, ol + .h4-style, ul + h4, ul + .h4-style,
+p:not(.is-style-eyebrow) + h5, p:not(.is-style-eyebrow) + .h5-style, ol + h5, ol + .h5-style, ul + h5, ul + .h5-style,
+p:not(.is-style-eyebrow) + h6, p:not(.is-style-eyebrow) + .h6-style, ol + h6, ol + .h6-style, ul + h6, ul + .h6-style {
+  margin-top: 2.8rem;
+}
+
+// Style classes with higher specificity
+.editor-content .h1-style,
+.h1-style,
+.is-style-h1-style {
+    line-height: $line-height-tight;
+  font-size: clamped(35px, 56px);
+  font-weight: 700;
+  letter-spacing: -0.48px;
+  @media(width >= $bp-medium) {
+  font-size: clamped(45px, 56px);
+  } 
+}
+
+.editor-content .h2-style,
+.h2-style,
+.is-style-h2-style {
+    line-height: $line-height-tight;
+  font-size: clamped(35px, 56px);
+  font-weight: 700;
+
+  letter-spacing: -0.48px;
+   @media(width >= $bp-medium) {
+  font-size: clamped(45px, 56px);
+  } 
+
+}
+
+.editor-content .h3-style,
+.h3-style,
+.is-style-h3-style {
+    line-height: $line-height-tight;
+  font-size: clamped(38px, 48px);
+  letter-spacing: -0.48px;
+  font-weight: 700;
+
+
+}
+
+.editor-content .h4-style,
+.h4-style,
+.is-style-h4-style {
+  line-height: $line-height-tight;
+  font-size: clamped(32px, 40px);
+  letter-spacing: -0.48px;
+  font-weight: 700;
+
+
+}
+
+.editor-content .h5-style,
+.h5-style,
+.is-style-h5-style {
+  line-height: $line-height-tight;
+  font-size: clamped(24px, 27px);
+  letter-spacing: -0.48px;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+
+}
+
+.editor-content .h6-style,
+.h6-style,
+.is-style-h6-style {
+  line-height: $line-height-tight;
+  font-size: clamped(20px, 22px);
+  letter-spacing: -0.48px;
+  font-weight: 700;
+
+}
+
+.is-eyebrow, h1.is-eyebrow, .h1-style.is-eyebrow, h2.is-eyebrow, .h2-style.is-eyebrow, h3.is-eyebrow, .h3-style.is-eyebrow, h4.is-eyebrow, .h4-style.is-eyebrow, h5.is-eyebrow, .h5-style.is-eyebrow, h6.is-eyebrow, .h6-style.is-eyebrow, .is-style-eyebrow, span.is-eyebrow {
+  text-transform: uppercase;
+  font-size: 19px !important;
+  line-height: 1.2;
+  letter-spacing: 1.19px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+p.is-eyebrow {
+  margin-bottom: 0;
+}

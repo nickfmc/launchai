@@ -1,0 +1,160 @@
+/* ==========================================================================
+   CONTENT GRID LAYOUT SYSTEM
+   ========================================================================== */
+
+/**
+ * A CSS Grid-based layout system with named grid lines for content zones.
+ * Creates a 9-column grid with content/feature/full-width positioning options.
+ * 
+ * Usage:
+ * - Apply .content-grid to Group block (via block style)
+ * - Apply positioning classes to child blocks:
+ *   .content--feature, .content--feature-max, .content--full, .content--full-safe
+ */
+
+/* CSS Custom Properties - Define default values for grid layout */
+:root {
+  --gutter: 1.5rem; /* 24px - outer gutters for full-width content */
+  --content-width: 65ch; /* ~780px - main content column width */
+  --feature-width: 5rem; /* 80px - feature zone width on each side */
+  --feature-max-width: 8rem; /* 128px - extended feature zone width */
+}
+
+/* Responsive adjustments for CSS variables */
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2rem; /* 32px on larger screens */
+    --feature-width: 8rem; /* 128px */
+    --feature-max-width: 12rem; /* 192px */
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 3rem; /* 48px on xl screens */ 
+  } 
+} 
+
+/* ==========================================================================
+   GRID CONTAINER
+   ========================================================================== */ 
+.content-grid,
+.is-style-content-grid { 
+  --full: minmax(var(--gutter), 1fr); 
+  padding-inline: 0;
+  column-gap: 0 !important;
+  display: grid !important;
+  max-width: 100%;
+  grid-template-columns:
+    [full-start] var(--full)
+    [feature-max-start] minmax(0, var(--feature-max-width, 100px))
+    [feature-start] minmax(0, var(--feature-width, 50px))
+    [content-start] min(var(--content-width), 100% - var(--gutter) * 2)
+    [content-end] minmax(0, var(--feature-width, 50px))
+    [feature-end] minmax(0, var(--feature-max-width, 100px))
+    [feature-max-end] var(--full)
+    [full-end];
+}
+
+/* Default positioning for children without explicit classes */
+:is(.content-grid, .is-style-content-grid) > :not(.content--feature, .content--feature-max, .content--full, .content--full-safe, .content--custom, .is-style-content--feature, .is-style-content--feature-max, .is-style-content--full, .is-style-content--full-safe) {
+  width: 100%;
+}
+
+:is(.content-grid, .is-style-content-grid) > :where(:not(.content--feature, .content--feature-max, .content--full, .content--full-safe, .content--custom, .is-style-content--feature, .is-style-content--feature-max, .is-style-content--full, .is-style-content--full-safe)) {
+  grid-column: content;
+}
+
+/* Remove padding from content-grid when used with section/padding classes */
+:is(.content-grid, .is-style-content-grid):is([class*="padding--"], [class*="section--"], [class*="header--"]) {
+  padding-inline: 0;
+}
+
+/* When content-grid itself has full-safe class (edge case) */
+:is(.content-grid, .is-style-content-grid):where(.content--full-safe) {
+  padding-inline: var(--gutter);
+}
+
+/* ==========================================================================
+   CHILD POSITIONING CLASSES
+   ========================================================================== */
+
+/**
+ * Feature Zone - Extends slightly beyond content area
+ * Grid columns: feature-start to feature-end
+ */
+.content--feature,
+.is-style-content--feature {
+  grid-column: feature;
+}
+
+/**
+ * Feature Max Zone - Extends further into margins
+ * Grid columns: feature-max-start to feature-max-end
+ */
+.content--feature-max,
+.is-style-content--feature-max {
+  grid-column: feature-max;
+}
+
+/**
+ * Full Width - Edge-to-edge (bleeds to viewport edges)
+ * Grid columns: full-start to full-end
+ */
+.content--full,
+.is-style-content--full {
+  grid-column: full;
+}
+
+/**
+ * Full Width Safe - Full width but with gutter padding
+ * Grid columns: full-start to full-end + horizontal padding
+ */
+.content--full-safe,
+.is-style-content--full-safe {
+  grid-column: full;
+  padding-inline: var(--gutter);
+}
+
+/* Force full width and prevent max-width constraints on positioned children */
+/* Simplified selector to avoid exponential complexity that hangs compilers */
+.content--feature,
+.content--feature-max,
+.content--full,
+.content--full-safe,
+.is-style-content--feature,
+.is-style-content--feature-max,
+.is-style-content--full,
+.is-style-content--full-safe {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+/* Opt-out: Reset width for positioned children inside disabled grids */
+:is(.content-grid--off, .is-style-content-grid--off) {
+  .content--feature,
+  .content--feature-max,
+  .content--full,
+  .content--full-safe,
+  .is-style-content--feature,
+  .is-style-content--feature-max,
+  .is-style-content--full,
+  .is-style-content--full-safe {
+    width: auto !important;
+    max-width: none;
+  }
+}
+
+/* ==========================================================================
+   NESTED GRID OPT-OUT
+   ========================================================================== */
+
+/**
+ * Use .content-grid--off on a child content-grid to disable parent grid behavior
+ * Allows nested grids with independent layouts
+ */
+.content-grid--off,
+.is-style-content-grid--off {
+  display: block !important;
+  grid-column: auto;
+}

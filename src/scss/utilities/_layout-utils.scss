@@ -65,3 +65,13 @@
       z-index: $z-layer;
     }
   }
+
+
+// ++ grid child placement (for use inside .o-page-grid / subgrid) ++++++++++++
+// These mirror the direct-child selectors in _wrapper.scss and work at any
+// nesting depth once a subgrid context is established.
+.grid-content { grid-column: content; }
+.grid-wide    { grid-column: wide; }
+.grid-full    { grid-column: full; }
+.bleed-right  { grid-column: content-start / full-end; }
+.bleed-left   { grid-column: full-start / content-end; }

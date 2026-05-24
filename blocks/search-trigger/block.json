@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "launchpad/search-trigger",
+    "title": "Search Trigger",
+    "category": "myblocks",
+    "description": "Header search popup trigger button and dialog. JS-powered (requires initSearchPopup module).",
+    "keywords": ["search", "popup", "header"],
+    "supports": {
+        "html": false,
+        "inserter": false,
+        "customClassName": false
+    },
+    "textdomain": "launchpad",
+    "editorScript": "file:../../build/search-trigger.js",
+    "render": "file:./render.php"
+}

@@ -5,11 +5,13 @@
   "scripts": {
     "build": "wp-scripts build",
     "start": "wp-scripts start",
+    "bs": "browser-sync start --config bs-config.js",
     "lint:js": "wp-scripts lint-js src/js",
     "lint:css": "wp-scripts lint-style 'src/**/*.scss'"
   },
   "devDependencies": {
     "@wordpress/scripts": "^29.0.0",
+    "browser-sync": "^3.0.4",
     "sass-migrator": "^2.0.2"
   },
   "dependencies": {

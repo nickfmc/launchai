@@ -5,6 +5,26 @@
 
 
 /*------------------------------------*\
+    SKIP LINKS
+\*------------------------------------*/
+
+/**
+ * Output skip links immediately after <body> opens.
+ * Hooked via wp_body_open so they don't appear as raw HTML blocks in the Site Editor.
+ */
+function launchpad_skip_links() {
+	?>
+	<div class="skip-links" role="navigation" aria-label="<?php esc_attr_e( 'Skip links navigation', 'launchpad' ); ?>">
+		<a href="#main-content" class="skip-link" aria-label="<?php esc_attr_e( 'Skip to main content', 'launchpad' ); ?>"><?php esc_html_e( 'Skip to main content', 'launchpad' ); ?></a>
+		<a href="#site-navigation" class="skip-link" aria-label="<?php esc_attr_e( 'Skip to main navigation', 'launchpad' ); ?>"><?php esc_html_e( 'Skip to main navigation', 'launchpad' ); ?></a>
+		<a href="#c-page-footer" class="skip-link" aria-label="<?php esc_attr_e( 'Skip to page footer', 'launchpad' ); ?>"><?php esc_html_e( 'Skip to page footer', 'launchpad' ); ?></a>
+	</div>
+	<?php
+}
+add_action( 'wp_body_open', 'launchpad_skip_links' );
+
+
+/*------------------------------------*\
     CLEAN UP STUFF
 \*------------------------------------*/
 

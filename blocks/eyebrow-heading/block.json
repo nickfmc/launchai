@@ -1,0 +1,34 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "launchpad/eyebrow-heading",
+    "title": "Eyebrow Heading",
+    "category": "myblocks",
+    "description": "A heading with a semantic eyebrow span inside the same heading tag.",
+    "keywords": ["heading", "eyebrow", "h1", "h2", "h3"],
+    "supports": {
+        "html": false,
+        "color": { "text": true, "background": false },
+        "typography": { "fontSize": true },
+        "spacing": { "margin": true, "padding": true },
+        "anchor": true
+    },
+    "attributes": {
+        "tagName": {
+            "type": "string",
+            "default": "h2"
+        },
+        "eyebrowText": {
+            "type": "string",
+            "source": "html",
+            "selector": ".is-eyebrow"
+        },
+        "headingText": {
+            "type": "string",
+            "source": "html",
+            "selector": ".c-eyebrow-heading__text"
+        }
+    },
+    "textdomain": "launchpad",
+    "editorScript": "file:../../build/eyebrow-heading.js"
+}

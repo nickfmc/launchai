@@ -23,9 +23,17 @@
   --heading-color: var(--color-gray-dark);
 
   // ++ LAYOUT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  --wrapper-width-base:   1180px;
-  --wrapper-width-wide:   1180px;
+  // Fluid gutter — ~16px at 320px viewport, ~25px at 500px, max 48px
+  --grid-gutter: clamp(1rem, 5vw, 3rem);
+  // Fixed safe-edge padding for FSE constrained content areas.
+  // alignfull blocks use negative margins to break out of this.
+  --content-padding-inline: 25px;
+
+  // Alias WP-generated layout tokens (fallbacks for editor context)
+  --wrapper-width-base:   var(--wp--style--global--content-size, 1180px);
+  --wrapper-width-wide:   var(--wp--style--global--wide-size, 1400px);
   --wrapper-width-narrow: 760px;
+
   --page-header-height:   100px;
   --logo-size:            300px;
 

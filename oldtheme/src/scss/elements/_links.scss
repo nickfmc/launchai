@@ -1,0 +1,44 @@
+/* ==========================================================================
+   A TAG (links) STYLES
+/* Links and Buttons
+   ========================================================================== */
+a,
+button {  // Added button
+  color: $link-color;
+  text-decoration: none;
+  cursor: pointer; 
+  transition: $transition-ease;
+}
+
+a:hover,
+a:focus,
+button:hover,
+button:focus { // Added button states
+  color: $link-hover;
+}
+
+// a:focus,
+// button:focus,
+// #search-button:focus,
+// #close-search-popup:focus,
+// #search-submit:focus { // Added the specific popup buttons
+//   outline: 2px solid $link-color;
+//   outline-offset: 2px;
+//   border-radius: 2px;
+// }
+
+
+
+
+// Additional button reset styles
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: inherit;
+}
+
+a[href^="mailto:"] {
+  overflow-wrap: break-word;
+}

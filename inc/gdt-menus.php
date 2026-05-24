@@ -101,6 +101,46 @@ add_filter(
 
 
 /*------------------------------------*\
+    MOBILE MENU BUTTON SHORTCODE
+\*------------------------------------*/
+
+/**
+ * Shortcode to output the mobile menu button and modal.
+ *
+ * Usage: [mobile_menu_button style="accordion"]
+ * or:    [mobile_menu_button style="sliding"]
+ *
+ * @param array $atts Shortcode attributes.
+ * @return string HTML output.
+ */
+function launchpad_mobile_menu_button_shortcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'style' => 'accordion', // 'accordion' or 'sliding'
+		),
+		$atts,
+		'mobile_menu_button'
+	);
+
+	$menu_style = in_array( $atts['style'], array( 'accordion', 'sliding' ), true ) ? $atts['style'] : 'accordion';
+
+	ob_start();
+	?>
+	<button id="open-modal-nav" class="c-modal-nav-button" aria-expanded="false" aria-haspopup="menu" aria-label="Open menu">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+			<path d="M3 12H21M3 6H21M3 18H21" stroke="#414651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</button>
+	<?php
+	// Load the mobile menu template with style parameter
+	get_template_part( 'template-part/navigation/nav-mobile', null, array( 'menu_style' => $menu_style ) );
+
+	return ob_get_clean();
+}
+add_shortcode( 'mobile_menu_button', 'launchpad_mobile_menu_button_shortcode' );
+
+
+/*------------------------------------*\
     ACCESSIBLE NAV WALKER
 \*------------------------------------*/
 

@@ -1,0 +1,86 @@
+{
+    "version":2,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"spacing": {
+			"blockGap": false
+		},
+        "color": {
+			"custom": false,
+			"palette": [
+				{
+                    "name": "Black",
+					"slug": "black",
+					"color": "#000000"
+				},
+				{
+					"slug": "white",
+					"color": "#FFFFFF",
+					"name": "White"
+				},
+                {
+					"slug": "dark-grey",
+					"color": "#121212",
+					"name": "Dark grey"
+				},
+				{
+					"slug": "medium-grey",
+					"color": "#383838",
+					"name": "Medium grey"
+				},
+				{
+					"slug": "primary",
+					"color": "#00838f",
+					"name": "Primary"
+				},
+				{
+					"slug": "secondary",
+					"color": "#4fb3bf",
+					"name": "Secondary" 
+				},
+				{
+					"slug": "transparent",
+					"color": "transparent",
+					"name": "Transparent"
+				}
+			],
+			"gradients": [
+				{
+					"slug": "primary-white",
+					"gradient": "linear-gradient(#0073aa 49.9%,#fff 50%)",
+					"name": "Primary color to white"
+				},
+				{
+					"slug": "white-primary",
+					"gradient": "linear-gradient(#fff 49.9%,#0073aa 50%)",
+					"name": "Horizontal white to Primary color"
+				}
+			]
+		
+    },
+    "layout": {
+        "contentSize": "1180px"
+	},
+	"typography": {
+		"fontSizes": [
+			{
+				"slug": "small",
+				"size": "14px",
+				"name": "Small"
+			},
+			{
+				"slug": "normal",
+				"size": "1rem",
+				"name": "Normal"
+			},
+			{
+				"slug": "large",
+				"size": "1.5rem",
+				"name": "large"
+			}
+		]
+	}
+	}  
+}

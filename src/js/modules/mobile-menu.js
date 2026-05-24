@@ -1,9 +1,11 @@
+import { initMobileMenuSliding } from './mobile-menu-sliding.js';
+
 /**
  * Accordion-style mobile submenu.
  * Inserts an "Overview" link at the top of each submenu so the parent
  * page remains navigable when the accordion is open.
  */
-export function initMobileMenu() {
+export function initMobileMenuAccordion() {
 	const menuItems = document.querySelectorAll( '.c-mobile-menu .menu-item-has-children' );
 	if ( ! menuItems.length ) return;
 
@@ -40,4 +42,20 @@ export function initMobileMenu() {
 			menuItem.classList.toggle( 'is-open' );
 		} );
 	} );
+}
+
+/**
+ * Initialize mobile menu based on the style set in the modal wrapper.
+ */
+export function initMobileMenu() {
+	const modalWrap = document.getElementById( 'modal-nav-wrap' );
+	if ( ! modalWrap ) return;
+
+	const menuStyle = modalWrap.getAttribute( 'data-menu-style' ) || 'accordion';
+
+	if ( 'sliding' === menuStyle ) {
+		initMobileMenuSliding();
+	} else {
+		initMobileMenuAccordion();
+	}
 }

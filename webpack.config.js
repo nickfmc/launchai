@@ -13,5 +13,10 @@ module.exports = {
 		site: path.resolve( __dirname, 'src/site.js' ),
 		// Block editor styles → build/editor-styles.css
 		'editor-styles': path.resolve( __dirname, 'src/editor-styles.js' ),
+		// Block editor customizations (block styles, unregister unused blocks)
+		'editor': path.resolve( __dirname, 'src/editor.js' ),
+		// Theme blocks
+		'search-trigger':  path.resolve( __dirname, 'blocks/search-trigger/index.js' ),
+		'eyebrow-heading': path.resolve( __dirname, 'blocks/eyebrow-heading/index.js' ),
 	},
 };

@@ -1,0 +1,74 @@
+/* ==========================================================================
+   VARIABLES
+   ========================================================================== */
+
+// ++ BREAKPOINTS +++++++++++++++++++++++++++++++++
+$bp-small: 500px; 
+$bp-medium: 768px;
+$bp-large: 992px;
+$bp-xlarge: 1320px;
+
+
+// Match these to your theme.json layout settings.
+// Also check the setting of any block plugins you use to match these.
+// Keep the same, depricating wide usage.
+$wrapper-width-wide: 1180px; // Gutenberg Wide wrapper
+$wrapper-width-base: 1180px;  // Gutenberg Standard wrapper
+// Match these to your theme.json layout settings.
+
+
+$wrapper-width-narrow: 760px;
+
+$page-header-height: 100px;
+
+
+// ++ COLOURS +++++++++++++++++++++++++++++++++
+$color-red:         #A82313;
+ 
+$color-primary:       #0f105f; 
+$color-secondary:       #0f2f5f;
+
+$color-gray-light:        #EAEAEA;
+$color-gray-med:        #ACACAC;
+$color-gray-dark:        #323232;
+
+ 
+$color-black:           #000;
+$color-white:           #FFF;
+
+// assign colours to variables
+$focus-color:       $color-red;
+$alert-color:       $color-red;
+$text-color:        $color-black;
+$link-color:        $color-secondary;
+$link-hover:        $color-gray-dark;
+$border-color:      $color-gray-med;
+$heading-color:     $color-gray-dark;
+
+
+// ++ MISC VARS ++++++++++++++++++++++++++++++++++
+// Logo
+
+$logo-size: 300px;
+
+
+
+// ++ TYPOGRAPHY +++++++++++++++++++++++++++++++++
+// Fonts
+$font-primary: 'Inter', sans-serif;
+$font-secondary: 'Inter', serif;
+
+// Spacing
+$line-height-normal: 1.50;
+$line-height-tight: 1.10;
+$line-height-loose: 1.70;
+$letter-spacing: 0.125em; //2px
+
+// Glyphs
+$double-arrow: "\u21d2";
+$link-glyph: $double-arrow;
+
+
+// ++ TRANSITIONS +++++++++++++++++++++++++++++++++
+$transition-ease: all 250ms ease;
+$transition-ease-slow: all 400ms ease;

@@ -2,25 +2,18 @@
  * Edits and additions to the default Gutenberg setup
  */
 
-// // ++ create custom button style names + remove included buttons styles
-wp.blocks.registerBlockStyle( 'core/button', {
+wp.blocks.registerBlockStyle('core/button', {
   name: 'standard',
   label: 'Standard Button'
-} );
-// wp.blocks.registerBlockStyle( 'core/button', {
-//   name: 'border',
-//   label: 'Border Button'
-// } );
+});
 
 wp.blocks.registerBlockStyle(
   'core/paragraph',
   {
     name: 'secondaryfont',
     label: 'Secondary Font',
-    
   }
 );
-
 
 wp.blocks.registerBlockStyle(
   'core/columns',
@@ -30,36 +23,30 @@ wp.blocks.registerBlockStyle(
   }
 );
 
+wp.domReady(() => {
+  // Remove default button styles — theme registers 'standard' above
+  wp.blocks.unregisterBlockStyle('core/button', 'fill');
+  wp.blocks.unregisterBlockStyle('core/button', 'outline');
+  wp.blocks.unregisterBlockStyle('core/button', 'squared');
 
-// some blocks are required by WP when doing other things, so keep an eye on the consol log, currently cover block causes errors if we remove it.
-wp.domReady( () => {
-  wp.blocks.unregisterBlockStyle( 'core/button', 'fill' );
-  wp.blocks.unregisterBlockStyle( 'core/button', 'outline' );
-  wp.blocks.unregisterBlockStyle( 'core/button', 'squared' );
-  // Unregister unwanted blocks here
-  wp.blocks.unregisterBlockType( 'core/preformatted' );
-  wp.blocks.unregisterBlockType( 'core/verse' );
-  wp.blocks.unregisterBlockType( 'core/pullquote' );
-  wp.blocks.unregisterBlockType( 'core/media-text' );
-  // wp.blocks.unregisterBlockType( 'core/cover' );
-  wp.blocks.unregisterBlockType( 'core/more' );
-  wp.blocks.unregisterBlockType( 'core/buttons' );
-  wp.blocks.unregisterBlockType( 'core/site-logo' );
-  wp.blocks.unregisterBlockType( 'core/site-tagline' );
-  wp.blocks.unregisterBlockType( 'core/site-title' );
-  wp.blocks.unregisterBlockType( 'core/calendar' );
-  wp.blocks.unregisterBlockType( 'core/latest-comments' );
-  wp.blocks.unregisterBlockType( 'core/tag-cloud' );
-  wp.blocks.unregisterBlockType( 'core/search' );
-  wp.blocks.unregisterBlockType( 'core/rss' );
-  wp.blocks.unregisterBlockType( 'core/social-links' );
-  wp.blocks.unregisterBlockType( 'core/latest-posts' );
-  wp.blocks.unregisterBlockType( 'core/categories' );
-  wp.blocks.unregisterBlockType( 'core/archives' );
-  wp.blocks.unregisterBlockType( 'core/query-title' );
-  // wp.blocks.unregisterBlockType( 'core/post-terms' );
-  // wp.blocks.unregisterBlockType( 'core/coverImage' );
+  // Unregister blocks not used in this theme
+  // NOTE: Do NOT unregister FSE-required blocks:
+  //   core/site-logo, core/site-title, core/site-tagline — used in header template
+  //   core/search, core/query-title                      — used in 404/search/archive templates
+  //   core/buttons                                       — core/button container
+  //   core/social-links                                  — footer social icons
+  wp.blocks.unregisterBlockType('core/preformatted');
+  wp.blocks.unregisterBlockType('core/verse');
+  wp.blocks.unregisterBlockType('core/pullquote');
+  wp.blocks.unregisterBlockType('core/media-text');
+  wp.blocks.unregisterBlockType('core/more');
+  wp.blocks.unregisterBlockType('core/calendar');
+  wp.blocks.unregisterBlockType('core/latest-comments');
+  wp.blocks.unregisterBlockType('core/tag-cloud');
+  wp.blocks.unregisterBlockType('core/rss');
+  wp.blocks.unregisterBlockType('core/latest-posts');
+  wp.blocks.unregisterBlockType('core/categories');
+  wp.blocks.unregisterBlockType('core/archives');
+});
 
-  // toolset customization
-  // wp.blocks.unregisterBlockType( 'toolset-blocks/button' );
-} );
+

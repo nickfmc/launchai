@@ -6,13 +6,20 @@
 
 /**
  * Enqueue block editor customization script.
+ * Uses the wp-scripts built file so WP package dependencies are auto-declared
+ * via the generated .asset.php file.
  */
 function launchpad_block_editor_scripts() {
+	$asset_file = get_stylesheet_directory() . '/build/editor.asset.php';
+	if ( ! file_exists( $asset_file ) ) {
+		return;
+	}
+	$asset = include $asset_file;
 	wp_enqueue_script(
 		'launchpad-block-editor',
-		get_theme_file_uri( '/dist/gutenberg-custom.js' ),
-		array( 'wp-blocks', 'wp-dom' ),
-		filemtime( get_stylesheet_directory() . '/dist/gutenberg-custom.js' ),
+		get_stylesheet_directory_uri() . '/build/editor.js',
+		$asset['dependencies'],
+		$asset['version'],
 		true
 	);
 }
@@ -68,25 +75,10 @@ function launchpad_asset_version( $script_path ) {
 
 
 /**
- * Register block-related scripts (Splide, Swiper, per-block JS).
+ * Register native block types.
  */
-function launchpad_register_block_scripts() {
-	wp_register_script( 'splide', get_template_directory_uri() . '/src/js/splide.min.js', array( 'acf' ), launchpad_asset_version( '/src/js/splide.min.js' ) );
-	wp_register_script( 'slider', get_template_directory_uri() . '/template-part/block/slider/slider.js', array( 'splide', 'acf' ), launchpad_asset_version( '/template-part/block/slider/slider.js' ) );
-	wp_register_script( 'swiper', get_template_directory_uri() . '/dist/swiper-bundle.min.js', array(), launchpad_asset_version( '/dist/swiper-bundle.min.js' ) );
-	wp_register_script( 'effects', get_template_directory_uri() . '/template-part/block/swiper-material/effect-material.min.js', array(), launchpad_asset_version( '/template-part/block/swiper-material/effect-material.min.js' ) );
-	wp_register_script( 'material-slider', get_template_directory_uri() . '/template-part/block/swiper-material/slider.js', array( 'swiper', 'effects', 'acf' ), launchpad_asset_version( '/template-part/block/swiper-material/slider.js' ) );
-	wp_register_script( 'project-slider', get_template_directory_uri() . '/template-part/block/swiper-projects/project-slider.js', array( 'swiper', 'effects', 'acf' ), launchpad_asset_version( '/template-part/block/swiper-projects/project-slider.js' ) );
+function launchpad_register_blocks() {
+	register_block_type( get_stylesheet_directory() . '/blocks/search-trigger/block.json' );
+	register_block_type( get_stylesheet_directory() . '/blocks/eyebrow-heading/block.json' );
 }
-add_action( 'init', 'launchpad_register_block_scripts' );
-
-
-/**
- * Register ACF JSON block types.
- */
-function launchpad_register_acf_blocks() {
-	register_block_type( get_stylesheet_directory() . '/template-part/block/button/block.json' );
-	register_block_type( get_stylesheet_directory() . '/template-part/block/swiper-material/block.json' );
-	register_block_type( get_stylesheet_directory() . '/template-part/block/swiper-projects/block.json' );
-}
-add_action( 'init', 'launchpad_register_acf_blocks', 5 );
+add_action( 'init', 'launchpad_register_blocks', 5 );

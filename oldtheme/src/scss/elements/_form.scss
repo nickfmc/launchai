@@ -1,0 +1,56 @@
+/* ==========================================================================
+   FORM STYLES
+   ========================================================================== */
+
+// ++ placeholder styles +++++++++++++++++++++++++++++++++
+input::placeholder, textarea::placeholder { 
+  color: $color-black;
+  opacity: 0.8; 
+}
+
+
+.c-search-form > div {
+  display: flex;
+max-width: var(--width-sm, 480px);
+align-items: center;
+gap: var(--spacing-xl, 16px);
+align-self: stretch;
+}
+
+form {
+  input {
+    display: flex;
+    padding: 10px 14px;
+    align-items: center;
+    gap: var(--spacing-md, 8px);
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: var(--radius-md, 8px);
+    border: 1px solid var(--Colors-Border-border-primary, #D0D5DD);
+    background: var(--Colors-Background-bg-primary, #FFF);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    overflow: hidden;
+    color: var(--Colors-Text-text-placeholder, #667085);
+    text-overflow: ellipsis;
+
+    &::placeholder {
+      overflow: hidden;
+      color: #667085;
+      text-overflow: ellipsis;
+    }
+
+    // Add focus states to match buttons and links
+    &:focus {
+      outline: 2px solid $link-color;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+// For high contrast mode (optional but recommended)
+@media (forced-colors: active) {
+  form input:focus {
+    outline: 2px solid SelectedItem;
+  }
+}
