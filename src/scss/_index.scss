@@ -1,0 +1,12 @@
+/* ==========================================================================
+   CONFIGURATION INDEX
+   Central namespace for all Sass variables, functions, and mixins.
+   Import this file with @use to access config layer without polluting global scope.
+   ========================================================================== */
+
+// Forward all configuration files so consumers can access them via a single @use
+@forward "settings/variables";
+@forward "tools/z-index";
+@forward "tools/fluid-type";
+@forward "tools/fluid-sizing";
+@forward "tools/helper-mixins";

@@ -1,18 +1,14 @@
-// ++ SETTINGS +++++++++++++++++++++++++++++++++
-@import "./scss/settings/_variables.scss";
-@import "./scss/settings/_custom-properties.scss";
+// ++ SETTINGS & TOOLS (Configuration Layer) +++++++++++++++++++++++++++++++++
+// Import custom properties first (outputs :root CSS)
+@use "./scss/settings/_custom-properties.scss";
 
-
-// ++ TOOLS +++++++++++++++++++++++++++++++++
-@import "./scss/tools/_z-index.scss";
-// deprecating.
-// @import "./scss/tools/_fluid-sizing.scss";
-@import "./scss/tools/_fluid-type.scss";
-@import "./scss/tools/_helper-mixins.scss";
+// Import configuration index for variables, functions, and mixins
+// Using "as *" to maintain backward compatibility with existing function calls
+@use "./scss/_index.scss" as *;
 
 
 // ++ VENDOR +++++++++++++++++++++++++++++++++
-@import "../node_modules/animate.css/animate.css";
+// animate.css removed — not used in codebase (was 76KB dead weight)
 // @import "../node_modules/aos/dist/aos.css";
 
 // @import "../node_modules/magnific-popup/dist/magnific-popup.css"; // removed — package deprecated
@@ -21,51 +17,51 @@
 
 
 // ++ ELEMENTS (BASE) +++++++++++++++++++++++++++++++++
-@import "./scss/elements/_normalize.scss";
-@import "./scss/elements/_normalize-extras.scss";
-@import "./scss/elements/_html-body.scss";
-@import "./scss/elements/_blockquote.scss";
-@import "./scss/elements/_headings.scss";
-@import "./scss/elements/_hr.scss";
-@import "./scss/elements/_form.scss";
-@import "./scss/elements/_links.scss";
-@import "./scss/elements/_paragraph.scss";
+@use "./scss/elements/_normalize.scss";
+@use "./scss/elements/_normalize-extras.scss";
+@use "./scss/elements/_html-body.scss";
+@use "./scss/elements/_blockquote.scss";
+@use "./scss/elements/_headings.scss";
+@use "./scss/elements/_hr.scss";
+@use "./scss/elements/_form.scss";
+@use "./scss/elements/_links.scss";
+@use "./scss/elements/_paragraph.scss";
 
 
 // ++ OBJECTS +++++++++++++++++++++++++++++++++
-@import "./scss/objects/_embed.scss";
-@import "./scss/objects/_section.scss";
-@import "./scss/objects/_wrapper.scss";
+@use "./scss/objects/_embed.scss";
+@use "./scss/objects/_section.scss";
+@use "./scss/objects/_wrapper.scss";
 
 
 // ++ COMPONENTS +++++++++++++++++++++++++++++++++
-@import "./scss/components/_accessibility.scss";
-@import "./scss/components/_blocks-default.scss";
-@import "./scss/components/_buttons.scss";
-@import "./scss/components/_footer-widgets.scss";
-@import "./scss/components/_footer.scss";
-@import "./scss/components/_header.scss";
-@import "./scss/components/_pills.scss";
-@import "./scss/components/_search.scss";
-@import "./scss/components/_small_blocks.scss";
-@import "./scss/components/_logo-main.scss";
-@import "./scss/components/_nav-main.scss";
-// @import "./scss/components/_blog.scss";
-// @import "./scss/components/_nav-modal.scss";
-@import "./scss/components/_navmobile.scss";
-@import "./scss/components/_nav-tertiary.scss";
-@import "./scss/components/_post-navi.scss";
-@import "./scss/components/_wp-content.scss";
-@import "./scss/components/_404.scss";
+@use "./scss/components/_accessibility.scss";
+@use "./scss/components/_blocks-default.scss";
+@use "./scss/components/_buttons.scss";
+@use "./scss/components/_footer-widgets.scss";
+@use "./scss/components/_footer.scss";
+@use "./scss/components/_header.scss";
+@use "./scss/components/_pills.scss";
+@use "./scss/components/_search.scss";
+@use "./scss/components/_small_blocks.scss";
+@use "./scss/components/_logo-main.scss";
+@use "./scss/components/_nav-main.scss";
+// @use "./scss/components/_blog.scss";
+// @use "./scss/components/_nav-modal.scss";
+@use "./scss/components/_navmobile.scss";
+@use "./scss/components/_nav-tertiary.scss";
+@use "./scss/components/_post-navi.scss";
+@use "./scss/components/_wp-content.scss";
+@use "./scss/components/_404.scss" as *;
 
 
 
 // ++ UTILITIES +++++++++++++++++++++++++++++++++
-@import "./scss/utilities/_colors.scss";
-@import "./scss/utilities/_height-utils.scss";
-@import "./scss/utilities/_layout-utils.scss";
-@import "./scss/utilities/_misc-utils.scss";
-@import "./scss/utilities/_overrides.scss";
-@import "./scss/utilities/_print.scss";
-@import "./scss/utilities/_spacing-utils.scss";
-@import "./scss/utilities/_width-utils.scss";
+@use "./scss/utilities/_colors.scss";
+@use "./scss/utilities/_height-utils.scss";
+@use "./scss/utilities/_layout-utils.scss";
+@use "./scss/utilities/_misc-utils.scss";
+@use "./scss/utilities/_overrides.scss";
+@use "./scss/utilities/_print.scss";
+@use "./scss/utilities/_spacing-utils.scss";
+@use "./scss/utilities/_width-utils.scss";
