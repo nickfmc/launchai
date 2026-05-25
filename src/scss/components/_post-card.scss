@@ -1,0 +1,72 @@
+/* ==========================================================================
+   POST CARD (Archive/Index Grid)
+   ========================================================================== */
+@use "../_index" as *;
+
+.c-post-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .wp-block-post-featured-image {
+    overflow: hidden;
+
+    img {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &:hover .wp-block-post-featured-image img {
+    transform: scale(1.05);
+  }
+
+  .c-post-card__body {
+    h2, .wp-block-post-title {
+      transition: color 0.2s ease;
+      
+      a {
+        text-decoration: none;
+        color: inherit;
+        
+        &:hover {
+          color: var(--link-color, #0066CC);
+        }
+      }
+    }
+
+    .wp-block-post-date {
+      color: var(--text-secondary, #6B7280);
+      font-size: 0.875rem;
+    }
+
+    .wp-block-post-excerpt {
+      color: var(--text-color, #1F2937);
+      line-height: 1.6;
+    }
+  }
+
+  // Mobile responsive adjustments
+  @media (width < $bp-medium) {
+    .c-post-card__body {
+      padding: 1rem !important;
+    }
+  }
+}
+
+// Grid layout adjustments
+.wp-block-query {
+  .wp-block-post-template {
+    &.is-layout-grid {
+      gap: 1.5rem;
+
+      @media (width < $bp-medium) {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
+      }
+    }
+  }
+}
