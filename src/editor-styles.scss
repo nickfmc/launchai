@@ -131,15 +131,6 @@ body .wp-block-column {
 	  margin-left: 20px; 
 	}
    }
-  
-// // /* Width of "regular" blocks -- WHY DO I NEED THIS MESS TOOLSET!?!?! */
-.wp-block, 
- .wp-block[data-type^="toolset"]:not([data-align^="full"]), 
- div:not([class]) > .block-editor-block-list__layout > .wp-block:not([data-align^="full"]), 
- .tb-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:not([data-align^="full"]) {
-	max-width: var(--wrapper-width-base) !important;
-	z-index: 10;
-}
 
 // and full width blocks
 .wp-block[data-align="full"], .is-style-alignfull, .alignfull  {
