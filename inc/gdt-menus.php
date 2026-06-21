@@ -126,15 +126,15 @@ function launchpad_mobile_menu_button_shortcode( $atts ) {
 
 	ob_start();
 	?>
-	<button id="open-modal-nav" class="c-modal-nav-button" aria-expanded="false" aria-haspopup="menu" aria-label="Open menu">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-			<path d="M3 12H21M3 6H21M3 18H21" stroke="#414651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-		</svg>
-	</button>
+	<div class="c-cl-mobile-nav">
+		<button id="open-modal-nav" class="c-modal-nav-button" aria-expanded="false" aria-haspopup="menu" aria-label="Open menu">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path d="M3 12H21M3 6H21M3 18H21" stroke="#414651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
+		<?php get_template_part( 'template-part/navigation/nav-mobile', null, array( 'menu_style' => $menu_style ) ); ?>
+	</div>
 	<?php
-	// Load the mobile menu template with style parameter
-	get_template_part( 'template-part/navigation/nav-mobile', null, array( 'menu_style' => $menu_style ) );
-
 	return ob_get_clean();
 }
 add_shortcode( 'mobile_menu_button', 'launchpad_mobile_menu_button_shortcode' );

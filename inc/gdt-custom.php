@@ -18,6 +18,25 @@ add_action( 'after_setup_theme', 'launchpad_content_width', 0 );
 
 // ---- Project-specific functions below ----------------------------------------
 
+/**
+ * Render the classic PHP header (template-part/header/site-header.php) in place
+ * of the FSE "header" template part (parts/header.html), while leaving every
+ * other block-theme template/part untouched.
+ *
+ * parts/header.html still exists and is editable in the Site Editor, but its
+ * output is swapped out here on render — this slot is no longer block-editable.
+ */
+function launchpad_override_header_template_part( string $block_content, array $block ): string {
+	if ( ( $block['attrs']['slug'] ?? '' ) !== 'header' ) {
+		return $block_content;
+	}
+
+	ob_start();
+	get_template_part( 'template-part/header/site-header' );
+	return ob_get_clean();
+}
+add_filter( 'render_block_core/template-part', 'launchpad_override_header_template_part', 10, 2 );
+
 // Example: ACF icon picker path override
 // add_filter( 'acf_icon_path_suffix', function( $path_suffix ) {
 // 	return 'img/icons/';

@@ -11,9 +11,8 @@ $menu_style = isset( $args['menu_style'] ) ? $args['menu_style'] : 'accordion';
 $style_class = 'accordion' === $menu_style ? 'c-mobile-menu-accordion' : 'c-mobile-menu-sliding';
 ?>
 
-<div class="c-cl-mobile-nav">
-	<div class="x-body-wrapper"></div>
-	<div id="modal-nav-wrap" class="c-modal-nav-wrap <?php echo esc_attr( $style_class ); ?>" data-menu-style="<?php echo esc_attr( $menu_style ); ?>" tabindex="-1">
+<div class="x-body-wrapper"></div>
+<div id="modal-nav-wrap" class="c-modal-nav-wrap <?php echo esc_attr( $style_class ); ?>" data-menu-style="<?php echo esc_attr( $menu_style ); ?>" tabindex="-1">
 		<button id="close-modal-nav" class="c-close-modal-nav" aria-label="Close menu">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 				<path d="M18 6L6 18M6 6L18 18" stroke="#414651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -82,4 +81,3 @@ $style_class = 'accordion' === $menu_style ? 'c-mobile-menu-accordion' : 'c-mobi
 			</div>
 		</nav>
 	</div>
-</div>
